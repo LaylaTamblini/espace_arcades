@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CricleWipe
+  m_Controller: {fileID: 9100000, guid: 13f68f1c242156c4682a2ddc8a8e07cf, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: cf2eb94e78513e94da09fa249289e3f0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4ecb38554f47d2e4c97198e3d69cc32a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0980fc0c5ad09e84bb835093df4730a5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 35b351100d653a947a71b9360df3ca50, type: 2}
