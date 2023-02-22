@@ -12,9 +12,21 @@ public class DragAndDrop : MonoBehaviour
 
     [SerializeField]
     private Camera _camera;
-    
+
     [SerializeField]
     private DragAndDropWin _winScript;
+
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private AudioClip _audioSelected;
+
+    [SerializeField]
+    private AudioClip _audioError;
+
+    [SerializeField]
+    private AudioClip _audioWin;
 
     // première position
     // du click à l'écran
@@ -73,7 +85,7 @@ public class DragAndDrop : MonoBehaviour
             _moving = true;
 
             ////////////////////////////////////////////////////
-            // JOUER UN SON ON CLICK
+            _audioSource.PlayOneShot(_audioSelected);
         }
         
     }
@@ -100,7 +112,7 @@ public class DragAndDrop : MonoBehaviour
             _imgCollider.enabled = !_imgCollider.enabled;
             _winScript.AddPoints();
             //////////////////////////////////////////
-            // JOUER UN SON QUAND OBJET DANS CONTAINER
+            _audioSource.PlayOneShot(_audioWin);
          } else {
             // sinon, replace l'objet à sa position
             // de départ
@@ -109,6 +121,7 @@ public class DragAndDrop : MonoBehaviour
             Debug.Log("Position reset au reset : " + _resetPosition);
             ////////////////////////////////////////////////////
             // JOUER UN SON QUAND OBJET RESET DONC PAS CONTAINER
+            _audioSource.PlayOneShot(_audioError);
          }
     }
 }
