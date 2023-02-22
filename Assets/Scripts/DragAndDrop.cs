@@ -4,60 +4,58 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _imgContainer;
 
-    [SerializeField]
-    private GameObject _img;
+    [Header("CAMERA")]
+    [SerializeField][Tooltip("Main camera du projet pour position de la souris.")] private Camera _camera;
 
-    [SerializeField]
-    private Camera _camera;
+    [Header("SCRIPTS")]
+    [SerializeField][Tooltip("Script qui détermine les conditions de victoire.")] private DragAndDropWin _winScript;
 
-    [SerializeField]
-    private DragAndDropWin _winScript;
+    [Header("GAMEOBJECTS")]
+    [SerializeField][Tooltip("Le container d'une image pour le puzzle.")] private GameObject _imgContainer;
+    [SerializeField][Tooltip("L'image qui doit aller dans son container.")] private GameObject _img;
 
-    [SerializeField]
-    private AudioSource _audioSource;
-
-    [SerializeField]
-    private AudioClip _audioSelected;
-
-    [SerializeField]
-    private AudioClip _audioError;
-
-    [SerializeField]
-    private AudioClip _audioWin;
+    [Header("AUDIO")]
+    [SerializeField][Tooltip("L'AudioSource du SoundManager.")] private AudioSource _audioSource;
+    [SerializeField][Tooltip("Son quand l'image est sélectionnée.")] private AudioClip _audioSelected;
+    [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
+    [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
 
     // première position
-    // du click à l'écran
+    // du click à l'écran.
     private float _startPosX;
     private float _startPosY;
 
-    // bouge ou pas
+    // bouge ou pas.
     private bool _moving;
-    // fini ou pas
+    // fini ou pas.
     private bool _finish;
 
-    // collider du go
+    // collider du go.
     private Collider2D _imgCollider;
 
-    // position où on veut 
-    // replacer l'object si echec
+    // position où on veut
+    // replacer l'object si echec.
     private Vector3 _resetPosition;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
     void Start() {
         _resetPosition = this.transform.localPosition;
-        Debug.Log("Position reset au start : " + _resetPosition);
+        // Debug.Log("Position reset au start : " + _resetPosition);
         _imgCollider = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
     void Update() {
         // si n'est pas dans la forme noire
-        // donc pas finish
+        // donc pas finish.
         if(_finish == false) {
-            // si l'objet bouge
+            // si l'objet bouge.
             if(_moving) {
                 Vector3 mousePos;
                 mousePos = Input.mousePosition;
@@ -68,12 +66,15 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-    // marche pour pc/mobile
-    private void OnMouseDown() {
+    /// <summary>
+    /// OnMouseDown is called when the user has pressed the mouse button while
+    /// over the GUIElement or Collider.
+    /// </summary>
+    private void OnMouseDown() {        
         // si le button mouse est down
         // enregistre la position de la
-        // mouse en x et y
-        // + moving est à true ( donc en déplacement )
+        // mouse en x et y.
+        // + moving est à true ( donc en déplacement ).
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos;
             mousePos = Input.mousePosition;
@@ -83,45 +84,43 @@ public class DragAndDrop : MonoBehaviour
             _startPosY = mousePos.y - this.transform.localPosition.y;
 
             _moving = true;
-
-            ////////////////////////////////////////////////////
+            
             _audioSource.PlayOneShot(_audioSelected);
         }
-        
     }
 
-    private void OnMouseUp() {
+    /// <summary>
+    /// OnMouseUp is called when the user has released the mouse button.
+    /// </summary>
+    void OnMouseUp() {
         // est false quand la mouse
-        // est up
+        // est up.
         _moving = false;
 
         // distance entre la forme et
-        // son conteneur
+        // son conteneur.
         float  distance = Vector3.Distance(_img.transform.position, _imgContainer.transform.position);
 
         // si la distance et moin grande que un
         // place l'objet dans le conteneur
-        // (donc la forme noire)
+        // (donc la forme noire).
         if (distance < 1) {
             _img.transform.position = _imgContainer.transform.position;
             _finish = true;
             // désactive le collider du go
             // pour enlever l'intéraction qui
             // ajoutais des points même si l'objet
-            // était dans la forme noire
+            // était dans la forme noire.
             _imgCollider.enabled = !_imgCollider.enabled;
             _winScript.AddPoints();
-            //////////////////////////////////////////
             _audioSource.PlayOneShot(_audioWin);
-         } else {
+            } else {
             // sinon, replace l'objet à sa position
-            // de départ
+            // de départ.
             this.transform.localPosition = _resetPosition;
-            Debug.Log("Je reset ma position.");
-            Debug.Log("Position reset au reset : " + _resetPosition);
-            ////////////////////////////////////////////////////
-            // JOUER UN SON QUAND OBJET RESET DONC PAS CONTAINER
+            // Debug.Log("Je reset ma position.");
+            // Debug.Log("Position reset au reset : " + _resetPosition);
             _audioSource.PlayOneShot(_audioError);
-         }
+        }   
     }
 }
