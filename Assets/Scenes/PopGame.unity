@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &176327660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1265,6 +1265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popGameScript: {fileID: 1083307373}
+  _audioSource: {fileID: 1644417952}
+  _audioExplosion: {fileID: 8300000, guid: 1cc81c67fb90ce7419eca42715ef7152, type: 3}
 --- !u!212 &950731671
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1911,7 +1913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1644417952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2122,6 +2124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popGameScript: {fileID: 1083307373}
+  _audioSource: {fileID: 1644417952}
+  _audioExplosion: {fileID: 8300000, guid: 1cc81c67fb90ce7419eca42715ef7152, type: 3}
 --- !u!58 &1655570466
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2189,6 +2193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popGameScript: {fileID: 1083307373}
+  _audioSource: {fileID: 1644417952}
+  _audioExplosion: {fileID: 8300000, guid: 1cc81c67fb90ce7419eca42715ef7152, type: 3}
 --- !u!212 &1817629093
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2323,6 +2329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _popGameScript: {fileID: 1083307373}
+  _audioSource: {fileID: 1644417952}
+  _audioExplosion: {fileID: 8300000, guid: 1cc81c67fb90ce7419eca42715ef7152, type: 3}
 --- !u!212 &1905446661
 SpriteRenderer:
   m_ObjectHideFlags: 0
