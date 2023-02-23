@@ -11,6 +11,7 @@ public class Pop : MonoBehaviour
     [SerializeField][Tooltip("L'AudioSource du SoundManager.")] private AudioSource _audioSource;
     [SerializeField][Tooltip("Son d'explosion quand on touche le pop.")] private AudioClip _audioExplosion;
 
+
     private float _vitesse;
     private float _limiteX = 8f;
     private float _limiteY = 6f;
