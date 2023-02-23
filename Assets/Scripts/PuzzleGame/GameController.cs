@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
     [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
 
+    [Header("GAMEOBJECTS")]
+    [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
+
+
     private bool _firstGuess;
     private bool _secondGuess;
 
@@ -54,7 +58,7 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    //
+    //  Création des btns
     /// </summary>
     private void GetButtons() {
         // Trouve tout les go avec le tag PuzzleButton.
@@ -104,7 +108,8 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Quand on click sur
+    /// un puzzle
     /// </summary>
     public void PickAPuzzle() {
         // va chercher le nom du current selected gameobject dans unity.
@@ -120,6 +125,8 @@ public class GameController : MonoBehaviour
             // nous donne le nom de l'image
             _firstGuessPuzzle = _gamePuzzles[_firstGuessIndex].name;
             _btns[_firstGuessIndex].image.sprite = _gamePuzzles[_firstGuessIndex];
+            // desactive interactivité si btn est cliqué
+            _btns[_firstGuessIndex].interactable = false;
         } else if (!_secondGuess) {
             _secondGuess = true;
             // string to int.
@@ -127,6 +134,8 @@ public class GameController : MonoBehaviour
             // nous donne le nom de l'image
             _secondGuessPuzzle = _gamePuzzles[_secondGuessIndex].name;
             _btns[_secondGuessIndex].image.sprite = _gamePuzzles[_secondGuessIndex];
+            // desactive interactivité si btn est cliqué
+            _btns[_secondGuessIndex].interactable = false;
             // augmente le nombre d'essais réalisé
             // par le joueur
             _countGuesses++;
@@ -146,7 +155,7 @@ public class GameController : MonoBehaviour
 
         // si le match est bon.
         if (_firstGuessPuzzle == _secondGuessPuzzle) {
-            // yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.3f);
             // désactive l'intéractivité du btn.
             _btns[_firstGuessIndex].interactable = false;
             _btns[_secondGuessIndex].interactable = false;
@@ -157,16 +166,21 @@ public class GameController : MonoBehaviour
 
             CheckIfTheGameIsFinished();
 
-            // AJOUTER ANIMATION DÉPART
             _audioSource.PlayOneShot(_audioWin);
+            
         } else {
-            // yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.5f);
+
+
             // si le match n'est pas bon, on remet 
             // l'image de background.
             _btns[_firstGuessIndex].image.sprite = _bgImage;
             _btns[_secondGuessIndex].image.sprite = _bgImage;
 
-            // AJOUTER ANIMATION CARTE
+            // active interactivité si btn est cliqué
+            _btns[_firstGuessIndex].interactable = true;
+            _btns[_secondGuessIndex].interactable = true;
+
             _audioSource.PlayOneShot(_audioError);
         }
 
@@ -180,6 +194,8 @@ public class GameController : MonoBehaviour
         if (_countCorrectGuesses == _gameGuesses) {
             Debug.Log("Fin de la partie");
             Debug.Log("Tu as fini la partie en " + _countGuesses + " tours");
+
+            _panneau.SetActive(true);
         }
     }
 
