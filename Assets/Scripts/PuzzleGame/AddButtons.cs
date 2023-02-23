@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class AddButtons : MonoBehaviour
 {
-    [SerializeField] private Transform puzzleField;
-    [SerializeField] private GameObject btn;
+    [Header("PUZZLE FIELD")]
+    [SerializeField] private Transform _puzzleField;
 
-    void Awake() {
-        
+    [Header("GAMEOBJECTS")]
+    [SerializeField] private GameObject _btn;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake() {        
+        // fait une copie du GameObject
+        // et le met dans la variable button.
+        for (int i = 0; i < 8; i++) {
+            GameObject button = Instantiate(_btn);
+            // nomme le go en fonction
+            // de quand il apparait dans la scène.
+            button.name = "" + i;
+            // Set le parent du go button.
+            button.transform.SetParent(_puzzleField, false);
+        }
     }
 }
