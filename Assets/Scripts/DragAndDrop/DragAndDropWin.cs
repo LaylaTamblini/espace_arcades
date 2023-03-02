@@ -21,8 +21,6 @@ public class DragAndDropWin : MonoBehaviour
         // qui comporte les objets.
         _pointsToWin = _images.transform.childCount;
         // Debug.Log("Il y a " + _pointsToWin + " à gagner.")
-
-        Invoke("ExemplePouce", 5f);
     }
 
     /// <summary>
@@ -35,10 +33,6 @@ public class DragAndDropWin : MonoBehaviour
         if (_currentPoints >= _pointsToWin) {
             _panneau.SetActive(true);
         }
-    }
-
-    private void ExemplePouce() {
-        _pouceExemple.SetActive(false);
     }
 
     /// <summary>
