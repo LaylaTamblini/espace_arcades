@@ -7,6 +7,7 @@ public class DragAndDropWin : MonoBehaviour
     [Header("GAMEOBJECTS")]
     [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _images;
     [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
+    [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _pouceExemple;
 
     private int _pointsToWin;
     private int _currentPoints;
@@ -20,6 +21,8 @@ public class DragAndDropWin : MonoBehaviour
         // qui comporte les objets.
         _pointsToWin = _images.transform.childCount;
         // Debug.Log("Il y a " + _pointsToWin + " à gagner.")
+
+        Invoke("ExemplePouce", 5f);
     }
 
     /// <summary>
@@ -32,6 +35,10 @@ public class DragAndDropWin : MonoBehaviour
         if (_currentPoints >= _pointsToWin) {
             _panneau.SetActive(true);
         }
+    }
+
+    private void ExemplePouce() {
+        _pouceExemple.SetActive(false);
     }
 
     /// <summary>

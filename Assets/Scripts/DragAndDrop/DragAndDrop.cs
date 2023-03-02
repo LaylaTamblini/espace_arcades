@@ -36,7 +36,7 @@ public class DragAndDrop : MonoBehaviour
 
     // position où on veut
     // replacer l'object si echec.
-    private Vector3 _resetPosition;
+    public Vector3 _resetPosition;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -106,6 +106,7 @@ public class DragAndDrop : MonoBehaviour
         // (donc la forme noire).
         if (distance < 1) {
             _img.transform.position = _imgContainer.transform.position;
+            _img.transform.localScale = _imgContainer.transform.localScale / 1.2f;
             _finish = true;
             // désactive le collider du go
             // pour enlever l'intéraction qui
