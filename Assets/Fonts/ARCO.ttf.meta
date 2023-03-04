@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5cb7d9f70f94fd4fa4959fb9e95ed35
+guid: ee18712f0291c9d49b161f9b6ba82b82
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - GROBOLD
+  - ARCO Typography
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

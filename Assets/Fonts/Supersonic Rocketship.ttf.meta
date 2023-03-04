@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ef8baf6b806a4984181505802c46e489
+guid: e52688e147cb3a248afa3b6ddb0b5715
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - KG Red Hands
+  - Supersonic Rocketship
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
