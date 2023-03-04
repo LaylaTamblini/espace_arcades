@@ -16,7 +16,6 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField][Tooltip("L'image qui doit aller dans son container.")] private GameObject _img;
 
     [Header("AUDIO")]
-    [SerializeField][Tooltip("L'AudioSource du SoundManager.")] private AudioSource _audioSource;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée.")] private AudioClip _audioSelected;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
@@ -36,7 +35,7 @@ public class DragAndDrop : MonoBehaviour
 
     // position où on veut
     // replacer l'object si echec.
-    public Vector3 _resetPosition;
+    private Vector3 _resetPosition;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -85,7 +84,7 @@ public class DragAndDrop : MonoBehaviour
 
             _moving = true;
             
-            _audioSource.PlayOneShot(_audioSelected);
+            SoundManager.Instance._effectSource.PlayOneShot(_audioSelected);
         }
     }
 
@@ -106,7 +105,7 @@ public class DragAndDrop : MonoBehaviour
         // (donc la forme noire).
         if (distance < 1) {
             _img.transform.position = _imgContainer.transform.position;
-            _img.transform.localScale = _imgContainer.transform.localScale / 1.2f;
+            _img.transform.localScale = _imgContainer.transform.localScale;
             _finish = true;
             // désactive le collider du go
             // pour enlever l'intéraction qui
@@ -114,14 +113,14 @@ public class DragAndDrop : MonoBehaviour
             // était dans la forme noire.
             _imgCollider.enabled = !_imgCollider.enabled;
             _winScript.AddPoints();
-            _audioSource.PlayOneShot(_audioWin);
+            SoundManager.Instance._effectSource.PlayOneShot(_audioWin);
             } else {
             // sinon, replace l'objet à sa position
             // de départ.
             this.transform.localPosition = _resetPosition;
             // Debug.Log("Je reset ma position.");
             // Debug.Log("Position reset au reset : " + _resetPosition);
-            _audioSource.PlayOneShot(_audioError);
+            SoundManager.Instance._effectSource.PlayOneShot(_audioError);
         }   
     }
 }

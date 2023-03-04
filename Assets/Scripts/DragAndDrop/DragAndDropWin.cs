@@ -7,7 +7,6 @@ public class DragAndDropWin : MonoBehaviour
     [Header("GAMEOBJECTS")]
     [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _images;
     [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
-    [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _pouceExemple;
 
     private int _pointsToWin;
     private int _currentPoints;
