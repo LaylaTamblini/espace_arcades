@@ -7,9 +7,9 @@ public class SoundManager : MonoBehaviour
     // singleton
     public static SoundManager Instance;
 
-    [SerializeField] private AudioSource _musicSource;
-    [SerializeField] private AudioSource _effectSource;
-    [SerializeField] private AudioSource _voiceSource;
+    [SerializeField] public AudioSource _musicSource;
+    [SerializeField] public AudioSource _effectSource;
+    [SerializeField] public AudioSource _voiceSource;
 
     /// <summary>
     /// 
@@ -21,13 +21,6 @@ public class SoundManager : MonoBehaviour
         } else {
             Destroy(gameObject);
         }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void ChangeMasterVolume(float value) {
-        AudioListener.volume = value;
     }
 
     /// <summary>

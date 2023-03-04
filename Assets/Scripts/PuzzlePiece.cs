@@ -40,7 +40,7 @@ public class PuzzlePiece : MonoBehaviour
     /// </summary>
     private void OnMouseDown() {
         _dragging = true;
-        _audioSource.PlayOneShot(_pickupSound);
+        SoundManager.Instance._effectSource.PlayOneShot(_pickupSound);
         // snap de la souris sur le go
         _offset = GetMousePos() - (Vector2)transform.position;
     }
@@ -57,7 +57,7 @@ public class PuzzlePiece : MonoBehaviour
             _placed = true;
         } else {
             _dragging = false;
-            _audioSource.PlayOneShot(_dropSound);
+            SoundManager.Instance._effectSource.PlayOneShot(_dropSound);
             transform.position = _originalPos;
         }
     }

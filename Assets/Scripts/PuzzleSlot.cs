@@ -10,6 +10,6 @@ public class PuzzleSlot : MonoBehaviour
     public SpriteRenderer Renderer;
 
     public void Placed() {
-        _audioSource.PlayOneShot(_completeSound);
+        SoundManager.Instance._effectSource.PlayOneShot(_completeSound);
     }
 }

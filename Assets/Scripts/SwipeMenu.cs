@@ -51,7 +51,6 @@ public class SwipeMenu : MonoBehaviour
                     }
             }
         }
-
         
     }
 }
