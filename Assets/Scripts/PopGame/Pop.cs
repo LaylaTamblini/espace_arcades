@@ -8,7 +8,6 @@ public class Pop : MonoBehaviour
     [SerializeField] private PopGame _popGameScript;
 
     [Header("AUDIO")]
-    [SerializeField][Tooltip("L'AudioSource du SoundManager.")] private AudioSource _audioSource;
     [SerializeField][Tooltip("Son d'explosion quand on touche le pop.")] private AudioClip _audioExplosion;
 
 
@@ -57,7 +56,7 @@ public class Pop : MonoBehaviour
     void OnMouseDown() {
         Recycler();
         // _anim.SetTrigger("boum");
-        _audioSource.PlayOneShot(_audioExplosion);
+        SoundManager.Instance._effectSource.PlayOneShot(_audioExplosion);
         // _popGameScript.AddPoints();
     }
 

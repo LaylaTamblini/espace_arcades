@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     [SerializeField][Tooltip("List des puzzles dans le jeu.")] private List<Sprite> _gamePuzzles = new List<Sprite>();
 
     [Header("AUDIO")]
-    [SerializeField][Tooltip("L'AudioSource du SoundManager.")] private AudioSource _audioSource;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée.")] private AudioClip _audioSelected;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
     [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
@@ -115,7 +114,7 @@ public class GameController : MonoBehaviour
         // va chercher le nom du current selected gameobject dans unity.
         string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
         Debug.Log("Click sur le btn qui se nomme " + name);
-        _audioSource.PlayOneShot(_audioSelected);
+        SoundManager.Instance._effectSource.PlayOneShot(_audioSelected);
 
         // permet au joueur d'avoir seulement deux essais
         if (!_firstGuess) {
@@ -166,7 +165,7 @@ public class GameController : MonoBehaviour
 
             CheckIfTheGameIsFinished();
 
-            _audioSource.PlayOneShot(_audioWin);
+            SoundManager.Instance._effectSource.PlayOneShot(_audioWin);
             
         } else {
             yield return new WaitForSeconds(.5f);
@@ -181,7 +180,7 @@ public class GameController : MonoBehaviour
             _btns[_firstGuessIndex].interactable = true;
             _btns[_secondGuessIndex].interactable = true;
 
-            _audioSource.PlayOneShot(_audioError);
+            SoundManager.Instance._effectSource.PlayOneShot(_audioError);
         }
 
         // yield return new WaitForSeconds(.5f);
