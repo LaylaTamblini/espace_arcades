@@ -36,7 +36,12 @@ public class Pop : MonoBehaviour
     {
         transform.Translate(Vector3.up * _vitesse * Time.deltaTime, Space.World);
         if(transform.position.y > _limiteY) {
-             Recycler();
+            Recycler();
+
+            if(gameObject.tag == "Comete"){
+                Debug.Log("Une comète est passé");
+                _popGameScript.PerdreEssais();
+            }
         }
     }
 
@@ -58,6 +63,11 @@ public class Pop : MonoBehaviour
         // _anim.SetTrigger("boum");
         SoundManager.Instance._effectSource.PlayOneShot(_audioExplosion);
         // _popGameScript.AddPoints();
+
+        if(gameObject.tag == "Etoile"){
+            _popGameScript.AddPoints();
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -66,10 +76,10 @@ public class Pop : MonoBehaviour
     public void Recycler() {
         // Debug.Log("Est recyclé");
         float posX = Random.Range(-_limiteX, _limiteX);
-        float size = Random.Range(0.5f, 2.5f);
+        float size = Random.Range(0.5f, 1f);
 
         _vitesse = Random.Range(1f,10f);
         transform.localScale =  new Vector3(size, size, size);
-        transform.position = new Vector3(posX,-7f,0);
+        transform.position = new Vector3(posX,-8f,0);
     }
 }

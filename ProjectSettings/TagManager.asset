@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PuzzleButton
+  - Comete
+  - Etoile
   layers:
   - Default
   - TransparentFX
