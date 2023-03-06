@@ -19,7 +19,7 @@ public class PopGame : MonoBehaviour
     [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _containerLettres;
 
     // private int _points;
-    private int _limiteTemps = 30;
+    private int _limiteTemps = 15;
     private int _currentTime;
     public int _pointsToWin;
     public int _currentPoints;
@@ -28,8 +28,8 @@ public class PopGame : MonoBehaviour
     private int _essais = 3;
 
     private void Start() {
-        _pointsToWin = _containerLettres.transform.childCount;
-        Debug.Log(_pointsToWin);
+        // _pointsToWin = _containerLettres.transform.childCount;
+        // Debug.Log(_pointsToWin);
     }
 
     public void Commencer() {
@@ -41,7 +41,7 @@ public class PopGame : MonoBehaviour
 
         _currentTime = 0;
         _textTime.text = "" +_currentTime;
-        _textEssais.text = "" +_essais;
+        // _textEssais.text = "" +_essais;
         _panneauDepart.SetActive(false);
     }
 
@@ -63,34 +63,34 @@ public class PopGame : MonoBehaviour
         }
     }
 
-    public void PerdreEssais() {
-        _essais --;
-        _textEssais.text = "" + _essais;
+    // public void PerdreEssais() {
+    //     _essais --;
+    //     _textEssais.text = "" + _essais;
 
-        if(_essais <= 0) {
-            CancelInvoke("Timer");
+    //     if(_essais <= 0) {
+    //         CancelInvoke("Timer");
 
-            for(int i=0; i<_pops.Length;i++) {
-                _pops[i].Activer(false);
-                _lettres[i].SetActive(true);
-            }
+    //         for(int i=0; i<_pops.Length;i++) {
+    //             _pops[i].Activer(false);
+    //             _lettres[i].SetActive(true);
+    //         }
             
-            _panneauDefeat.SetActive(true);
-        }
-    }
+    //         _panneauDefeat.SetActive(true);
+    //     }
+    // }
 
-    public void AddPoints() {
-        _currentPoints ++;
-        Debug.Log(_currentPoints);
+    // public void AddPoints() {
+    //     _currentPoints ++;
+    //     Debug.Log(_currentPoints);
 
-        if(_currentPoints == _pointsToWin) {
-            CancelInvoke("Timer");
+    //     if(_currentPoints == _pointsToWin) {
+    //         CancelInvoke("Timer");
 
-            for(int i=0; i<_pops.Length;i++) {
-                _pops[i].Activer(false);
-            }
+    //         for(int i=0; i<_pops.Length;i++) {
+    //             _pops[i].Activer(false);
+    //         }
             
-            _panneauWin.SetActive(true);
-        }
-    }
+    //         _panneauWin.SetActive(true);
+    //     }
+    // }
 }

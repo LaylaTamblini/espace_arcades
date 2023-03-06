@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AddButtons : MonoBehaviour
+public class AjoutBtn : MonoBehaviour
 {
     [Header("PUZZLE FIELD")]
     [SerializeField] private Transform _puzzleField;

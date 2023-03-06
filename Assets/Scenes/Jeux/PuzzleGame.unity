@@ -233,8 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26de6bf1dfe1cd459e85e968a160df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _puzzleField: {fileID: 673144070}
-  _btn: {fileID: 2730293918615536151, guid: bab38ac0cac40434f81f6fddb884cdbf, type: 3}
 --- !u!114 &219360752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +249,6 @@ MonoBehaviour:
   _puzzles: []
   _btns: []
   _gamePuzzles: []
-  _audioSource: {fileID: 1644417952}
   _audioSelected: {fileID: 8300000, guid: 315c22fde06b9604e86016b0c5526b95, type: 3}
   _audioError: {fileID: 8300000, guid: 08da25086e221af4a9d17942b7b8118f, type: 3}
   _audioWin: {fileID: 8300000, guid: 63bd7a8db011a204d88b1aab314df565, type: 3}

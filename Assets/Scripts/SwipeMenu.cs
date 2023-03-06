@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SwipeMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _scrollBar;
+    [SerializeField] private AudioClip _swipeSound;
     private float _scrollPos = 0;
     private float []_pos;
 

@@ -38,10 +38,10 @@ public class Pop : MonoBehaviour
         if(transform.position.y > _limiteY) {
             Recycler();
 
-            if(gameObject.tag == "Comete"){
-                Debug.Log("Une comète est passé");
-                _popGameScript.PerdreEssais();
-            }
+            // if(gameObject.tag == "Comete"){
+            //     Debug.Log("Une comète est passé");
+            //     _popGameScript.PerdreEssais();
+            // }
         }
     }
 
@@ -64,10 +64,10 @@ public class Pop : MonoBehaviour
         SoundManager.Instance._effectSource.PlayOneShot(_audioExplosion);
         // _popGameScript.AddPoints();
 
-        if(gameObject.tag == "Etoile"){
-            _popGameScript.AddPoints();
-            Destroy(gameObject);
-        }
+        // if(gameObject.tag == "Etoile"){
+        //     _popGameScript.AddPoints();
+        //     Destroy(gameObject);
+        // }
     }
 
     /// <summary>
