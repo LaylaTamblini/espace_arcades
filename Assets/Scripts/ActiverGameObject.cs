@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveGO : MonoBehaviour
+public class ActiverGameObject : MonoBehaviour
 {
     [SerializeField] private GameObject _GO;
 
