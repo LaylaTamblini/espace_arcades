@@ -25,7 +25,7 @@ public class PopGame : MonoBehaviour
     public int _currentPoints;
 
     // private int _points;
-    private int _essais = 3;
+    // private int _essais = 3;
 
     private void Start() {
         // _pointsToWin = _containerLettres.transform.childCount;

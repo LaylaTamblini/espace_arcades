@@ -8,6 +8,12 @@ public class DragAndDropWin : MonoBehaviour
     [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _images;
     [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
 
+    [SerializeField] private List<Transform> _positions;
+    [SerializeField] private List<GameObject> _planetes;
+
+    [SerializeField] private GameObject _panel01;
+    [SerializeField] private GameObject _panel02;
+
     private int _pointsToWin;
     private int _currentPoints;
 
@@ -20,6 +26,7 @@ public class DragAndDropWin : MonoBehaviour
         // qui comporte les objets.
         _pointsToWin = _images.transform.childCount;
         // Debug.Log("Il y a " + _pointsToWin + " à gagner.")
+        RandomList();
     }
 
     /// <summary>
@@ -40,5 +47,36 @@ public class DragAndDropWin : MonoBehaviour
     public void AddPoints() {
         _currentPoints ++;
         // Debug.Log("Vous avez gagné " + _currentPoints + " point(s).");
+    }
+
+    private void RandomList(){
+        List<Vector3> vector3pos = new List<Vector3>();
+
+        for (int i = 0; i < _positions.Count; i++) {
+            vector3pos.Add(_positions[i].position);
+        }
+
+        for (int i = 0; i < vector3pos.Count; i++) {
+            Vector3 temp = vector3pos[i];
+            int randomIndex = Random.Range(i, vector3pos.Count);
+            vector3pos[i] = vector3pos[randomIndex];
+            vector3pos[randomIndex] = temp;
+            
+            if (i <= 3){
+                _planetes[i].transform.SetParent(_panel01.transform);
+            }
+
+            if (i >= 4){
+                _planetes[i].transform.SetParent(_panel02.transform);
+            }
+        }
+
+        for (int i = 0; i < _planetes.Count; i++) {
+            _planetes[i].transform.position = vector3pos[i];
+
+            Debug.Log(_planetes[i].transform.position);
+
+
+        }
     }
 }

@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class ParticleMouse : MonoBehaviour
 {
+    [Header("GAMEOBJECT")]
     [SerializeField] private GameObject _particles;
+
+    [Header("AUDIO")]
     [SerializeField] private AudioClip _audioClip;
+    
     private Vector2 _mousePos;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start() {
         _particles.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update() {
         if (Input.GetMouseButtonDown(0)) {
             _mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             _particles.SetActive(true);
