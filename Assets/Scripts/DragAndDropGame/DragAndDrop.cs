@@ -106,6 +106,7 @@ public class DragAndDrop : MonoBehaviour
         if (distance < 1) {
             _img.transform.position = _imgContainer.transform.position;
             _img.transform.localScale = _imgContainer.transform.localScale;
+            _img.transform.parent = _img.transform.parent.parent;
             _finish = true;
             // désactive le collider du go
             // pour enlever l'intéraction qui
