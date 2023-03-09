@@ -10,7 +10,11 @@ public class PlaySound : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    public void JouerSon() {
+    public void JouerSonEffet() {
         SoundManager.Instance._effectSource.PlayOneShot(_sound);
+    }
+
+    public void JouerSonVoix() {
+        SoundManager.Instance._voiceSource.PlayOneShot(_sound);
     }
 }

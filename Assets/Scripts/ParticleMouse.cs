@@ -6,9 +6,6 @@ public class ParticleMouse : MonoBehaviour
 {
     [Header("GAMEOBJECT")]
     [SerializeField] private GameObject _particles;
-
-    [Header("AUDIO")]
-    [SerializeField] private AudioClip _audioClip;
     
     private Vector2 _mousePos;
 
@@ -32,7 +29,6 @@ public class ParticleMouse : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) {
             Invoke("SetActiveFalse",1.5f);
-            SoundManager.Instance._effectSource.PlayOneShot(_audioClip);
         }
     }
 
