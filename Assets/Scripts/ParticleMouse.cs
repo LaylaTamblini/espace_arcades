@@ -31,8 +31,12 @@ public class ParticleMouse : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            _particles.SetActive(false);
+            Invoke("SetActiveFalse",1.5f);
             SoundManager.Instance._effectSource.PlayOneShot(_audioClip);
         }
+    }
+
+    private void SetActiveFalse(){
+            _particles.SetActive(false);
     }
 }

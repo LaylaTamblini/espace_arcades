@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [Header("SPRITES")]
-    [SerializeField][Tooltip("Image background des cartes.")] private Sprite _bgImage;
-    [SerializeField][Tooltip("Images des puzzles.")] private Sprite[] _puzzles;
+    [Header("SPRITE")]
+    [SerializeField][Tooltip("")] private Sprite _bgImage;
+    [SerializeField][Tooltip("")] private Sprite[] _puzzles;
 
-    [Header("LISTES")]
-    [SerializeField][Tooltip("List des boutons.")] private List<Button> _btns = new List<Button>();
-    [SerializeField][Tooltip("List des puzzles dans le jeu.")] private List<Sprite> _gamePuzzles = new List<Sprite>();
+    [Header("LIST")]
+    [SerializeField][Tooltip("")] private List<Button> _btns = new List<Button>();
+    [SerializeField][Tooltip("")] private List<Sprite> _gamePuzzles = new List<Sprite>();
 
     [Header("AUDIO")]
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée.")] private AudioClip _audioSelected;
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
+    [SerializeField][Tooltip("")] private AudioClip _audioSelected;
+    [SerializeField][Tooltip("")] private AudioClip _audioError;
+    [SerializeField][Tooltip("")] private AudioClip _audioWin;
 
-    [Header("GAMEOBJECTS")]
-    [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
+    [Header("GAMEOBJECT")]
+    [SerializeField][Tooltip(".")] private GameObject _panneau;
 
 
     private bool _firstGuess;

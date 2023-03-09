@@ -436,8 +436,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
-  m_Spacing: {x: 90, y: 90}
+  m_CellSize: {x: 260, y: 330}
+  m_Spacing: {x: 60, y: 90}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!114 &673144072
@@ -573,7 +573,7 @@ RectTransform:
   m_Children:
   - {fileID: 673144070}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1089,7 +1089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510974479284782658, guid: 228b7ac789670bf43838cef53353d4a6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8510974479284782658, guid: 228b7ac789670bf43838cef53353d4a6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1206,7 +1206,7 @@ Transform:
   - {fileID: 1953682374}
   - {fileID: 864649099}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1861454208
 PrefabInstance:

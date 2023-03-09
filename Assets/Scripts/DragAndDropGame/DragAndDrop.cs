@@ -6,19 +6,20 @@ public class DragAndDrop : MonoBehaviour
 {
 
     [Header("CAMERA")]
-    [SerializeField][Tooltip("Main camera du projet pour position de la souris.")] private Camera _camera;
+    [SerializeField][Tooltip("")] private Camera _camera;
 
     [Header("SCRIPTS")]
-    [SerializeField][Tooltip("Script qui détermine les conditions de victoire.")] private DragAndDropWin _winScript;
+    [SerializeField][Tooltip("")] private DragAndDropWin _winScript;
 
     [Header("GAMEOBJECTS")]
-    [SerializeField][Tooltip("Le container d'une image pour le puzzle.")] private GameObject _imgContainer;
-    [SerializeField][Tooltip("L'image qui doit aller dans son container.")] private GameObject _img;
+    [SerializeField][Tooltip("")] private GameObject _imgContainer;
+    [SerializeField][Tooltip("")] private GameObject _img;
+    [SerializeField][Tooltip("")] private GameObject _imgNombre;
 
     [Header("AUDIO")]
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée.")] private AudioClip _audioSelected;
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée n'est pas placée dans son container.")] private AudioClip _audioError;
-    [SerializeField][Tooltip("Son quand l'image est sélectionnée est placée dans son container.")] private AudioClip _audioWin;
+    [SerializeField][Tooltip("")] private AudioClip _audioSelected;
+    [SerializeField][Tooltip("")] private AudioClip _audioError;
+    [SerializeField][Tooltip("")] private AudioClip _audioWin;
 
     // première position
     // du click à l'écran.
@@ -59,7 +60,6 @@ public class DragAndDrop : MonoBehaviour
                 Vector3 mousePos;
                 mousePos = Input.mousePosition;
                 mousePos = _camera.ScreenToWorldPoint(mousePos);
-
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - _startPosX, mousePos.y - _startPosY, this.gameObject.transform.localPosition.z);
             }
         }
@@ -95,7 +95,6 @@ public class DragAndDrop : MonoBehaviour
         // est false quand la mouse
         // est up.
         _moving = false;
-
         // distance entre la forme et
         // son conteneur.
         float  distance = Vector3.Distance(_img.transform.position, _imgContainer.transform.position);
@@ -106,6 +105,9 @@ public class DragAndDrop : MonoBehaviour
         if (distance < 1) {
             _img.transform.position = _imgContainer.transform.position;
             _img.transform.localScale = _imgContainer.transform.localScale;
+            // change le parent du go pour qu'il ne face
+            // plus partie du panel pour l'empêcher de faire
+            // l'animation.
             _img.transform.parent = _img.transform.parent.parent;
             _finish = true;
             // désactive le collider du go
@@ -114,6 +116,7 @@ public class DragAndDrop : MonoBehaviour
             // était dans la forme noire.
             _imgCollider.enabled = !_imgCollider.enabled;
             _winScript.AddPoints();
+            _imgNombre.SetActive(true);
             SoundManager.Instance._effectSource.PlayOneShot(_audioWin);
             } else {
             // sinon, replace l'objet à sa position

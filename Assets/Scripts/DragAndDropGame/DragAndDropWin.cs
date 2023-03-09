@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class DragAndDropWin : MonoBehaviour
 {
-    [Header("GAMEOBJECTS")]
-    [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _images;
-    [SerializeField][Tooltip("Gameobject parent qui regroupe les images.")] private GameObject _animation;
-    [SerializeField][Tooltip("Gameobject dans le canvas qui contient le panneau de victoire.")] private GameObject _panneau;
+    [Header("GAMEOBJECT")]
+    [SerializeField][Tooltip("")] private GameObject _images;
+    [SerializeField][Tooltip("")] private GameObject _panneau;
+    [SerializeField][Tooltip("")] private GameObject _animation1;
+    [SerializeField][Tooltip("")] private GameObject _animation2;
+    [SerializeField][Tooltip("")] private GameObject _btn1;
+    [SerializeField][Tooltip("")] private GameObject _btn2;
+    [SerializeField][Tooltip("")] private GameObject _panel;
 
-    [SerializeField] private List<Transform> _positions;
-    [SerializeField] private List<GameObject> _planetes;
+    [Header("LIST")]
+    [SerializeField][Tooltip("")] private List<Transform> _positions;
+    [SerializeField][Tooltip("")] private List<GameObject> _planetes;
 
     private int _pointsToWin;
     private int _currentPoints;
@@ -25,6 +30,7 @@ public class DragAndDropWin : MonoBehaviour
         _pointsToWin = _images.transform.childCount;
         // Debug.Log("Il y a " + _pointsToWin + " à gagner.")
         RandomList();
+        StartCoroutine(PremierTutoriel());
     }
 
     /// <summary>
@@ -35,11 +41,9 @@ public class DragAndDropWin : MonoBehaviour
         // les points pour gagner affiche
         // le panneau.
         if (_currentPoints >= _pointsToWin) {
-            _panneau.SetActive(true);
-        }
-
-        if(Input.GetMouseButtonDown(0)){
-            _animation.SetActive(false);
+            _panel.SetActive(false);
+            _btn1.SetActive(false);
+            _btn2.SetActive(false);
         }
     }
 
@@ -51,6 +55,30 @@ public class DragAndDropWin : MonoBehaviour
         // Debug.Log("Vous avez gagné " + _currentPoints + " point(s).");
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PremierTutoriel(){
+         _animation1.SetActive(true);
+         yield return new WaitForSeconds(3f);
+         _animation1.SetActive(false);
+         StartCoroutine(DeuxiemeTutoriel());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator DeuxiemeTutoriel(){
+         _animation2.SetActive(true);
+         yield return new WaitForSeconds(1f);
+         _animation2.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     private void RandomList(){
         List<PlanetPosition> planetPositions = new List<PlanetPosition>();
 
@@ -84,10 +112,7 @@ public class DragAndDropWin : MonoBehaviour
 
         // for (int i = 0; i < _planetes.Count; i++) {
         //     _planetes[i].transform.position = vector3pos[i];
-
         //     Debug.Log(_planetes[i].transform.position);
-
-
         // }
     }
 }
