@@ -849,7 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameScene: Accueil
   _animTransition: {fileID: 0}
-  _transitionTime: 1
+  _transitionTime: 0.5
 --- !u!114 &8450792868376784132
 MonoBehaviour:
   m_ObjectHideFlags: 0
