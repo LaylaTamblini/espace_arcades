@@ -20,6 +20,8 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField][Tooltip("")] private AudioClip _audioSelected;
     [SerializeField][Tooltip("")] private AudioClip _audioError;
     [SerializeField][Tooltip("")] private AudioClip _audioWin;
+    [SerializeField][Tooltip("")] private AudioClip _nomSound;
+    [SerializeField][Tooltip("")] private AudioClip _nombreSound;
 
     // première position
     // du click à l'écran.
@@ -85,6 +87,7 @@ public class DragAndDrop : MonoBehaviour
             _moving = true;
             
             SoundManager.Instance._effectSource.PlayOneShot(_audioSelected);
+            SoundManager.Instance._voiceSource.PlayOneShot(_nomSound);
         }
     }
 
@@ -118,6 +121,7 @@ public class DragAndDrop : MonoBehaviour
             _winScript.AddPoints();
             _imgNombre.SetActive(true);
             SoundManager.Instance._effectSource.PlayOneShot(_audioWin);
+            SoundManager.Instance._voiceSource.PlayOneShot(_nombreSound);
             } else {
             // sinon, replace l'objet à sa position
             // de départ.

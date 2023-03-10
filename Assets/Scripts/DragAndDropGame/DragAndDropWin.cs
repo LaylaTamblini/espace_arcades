@@ -6,12 +6,10 @@ public class DragAndDropWin : MonoBehaviour
 {
     [Header("GAMEOBJECT")]
     [SerializeField][Tooltip("")] private GameObject _images;
-    [SerializeField][Tooltip("")] private GameObject _panneau;
     [SerializeField][Tooltip("")] private GameObject _animation1;
     [SerializeField][Tooltip("")] private GameObject _animation2;
-    [SerializeField][Tooltip("")] private GameObject _btn1;
-    [SerializeField][Tooltip("")] private GameObject _btn2;
-    [SerializeField][Tooltip("")] private GameObject _panel;
+    [SerializeField][Tooltip("")] private GameObject _slotParent;
+    [SerializeField][Tooltip("")] private GameObject _winPanel;
 
     [Header("LIST")]
     [SerializeField][Tooltip("")] private List<Transform> _positions;
@@ -41,9 +39,8 @@ public class DragAndDropWin : MonoBehaviour
         // les points pour gagner affiche
         // le panneau.
         if (_currentPoints >= _pointsToWin) {
-            _panel.SetActive(false);
-            _btn1.SetActive(false);
-            _btn2.SetActive(false);
+            _slotParent.SetActive(false);
+            _winPanel.SetActive(true);
         }
     }
 
